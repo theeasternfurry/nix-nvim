@@ -60,6 +60,11 @@ with final.pkgs.lib; let
     nvim-navic # Add LSP location to lualine | https://github.com/SmiteshP/nvim-navic
     statuscol-nvim # Status column | https://github.com/luukvbaal/statuscol.nvim/
     nvim-treesitter-context # nvim-treesitter-context
+
+    # Tab UI
+    barbar-nvim
+    yazi-nvim
+
     # ^ UI
     # language support
     # ^ language support
