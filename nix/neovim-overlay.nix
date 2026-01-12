@@ -12,21 +12,14 @@ with final.pkgs.lib; let
 
   # Make sure we use the pinned nixpkgs instance for wrapNeovimUnstable,
   # otherwise it could have an incompatible signature when applying this overlay.
-  pkgs-locked = inputs.nixpkgs.legacyPackages.${pkgs.system};
+  pkgs-locked = inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 
   # This is the helper function that builds the Neovim derivation.
   mkNeovim = pkgs.callPackage ./mkNeovim.nix {
       inherit (pkgs-locked) wrapNeovimUnstable neovimUtils;
     };
 
-  # A plugin can either be a package or an attrset, such as
-  # { plugin = <plugin>; # the package, e.g. pkgs.vimPlugins.nvim-cmp
-  #   config = <config>; # String; a config that will be loaded with the plugin
-  #   # Boolean; Whether to automatically load the plugin as a 'start' plugin,
-  #   # or as an 'opt' plugin, that can be loaded with `:packadd!`
-  #   optional = <true|false>; # Default: false
-  #   ...
-  # }
+  # Plugins
   all-plugins = with pkgs.vimPlugins; [
     # plugins from nixpkgs go in here.
     # https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=vimPlugins
@@ -63,7 +56,13 @@ with final.pkgs.lib; let
 
     # Tab UI
     barbar-nvim
+
+    # File manager
     yazi-nvim
+
+    # AI
+    codecompanion-nvim         # AI tools support coding
+    codecompanion-spinner-nvim # Show loading icon while response
 
     # ^ UI
     # language support
