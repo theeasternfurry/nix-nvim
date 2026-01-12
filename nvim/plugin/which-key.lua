@@ -5,5 +5,9 @@ wk.setup({
 })
 
 wk.add({
-  { "<leader>e", "<cmd>Yazi<cr>", desc = "Yazi File explorer" },
+  { "<leader>f", group = "Find (FZF)" },
 })
+
+--wk.add({
+--  { "<leader>e", "<cmd>Yazi<cr>", desc = "Yazi File explorer" },
+--})
