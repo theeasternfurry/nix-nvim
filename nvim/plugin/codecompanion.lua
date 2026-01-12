@@ -14,6 +14,8 @@ require("codecompanion").setup({
           },
           parameters = {
             sync = true,
+            num_ctx = 16384,
+            num_thread = 8,
           },
           schema = {
             model = {
@@ -25,7 +27,9 @@ require("codecompanion").setup({
     },
   },
   strategies = {
-    chat = { adapter = "ollama" },
+    chat = {
+      adapter = "ollama",
+    },
     inline = { adapter = "ollama" },
     agent = { adapter = "ollama" },
   },
