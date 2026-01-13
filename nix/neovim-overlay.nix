@@ -1,10 +1,13 @@
 # This overlay, when applied to nixpkgs, adds the final neovim derivation to nixpkgs.
-{inputs}: final: prev:
-with final.pkgs.lib; let
+{ inputs }:
+final: prev:
+with final.pkgs.lib;
+let
   pkgs = final;
 
   # Use this to create a plugin from a flake input
-  mkNvimPlugin = src: pname:
+  mkNvimPlugin =
+    src: pname:
     pkgs.vimUtils.buildVimPlugin {
       inherit pname src;
       version = src.lastModifiedDate;
@@ -16,8 +19,8 @@ with final.pkgs.lib; let
 
   # This is the helper function that builds the Neovim derivation.
   mkNeovim = pkgs.callPackage ./mkNeovim.nix {
-      inherit (pkgs-locked) wrapNeovimUnstable neovimUtils;
-    };
+    inherit (pkgs-locked) wrapNeovimUnstable neovimUtils;
+  };
 
   # Plugins
   all-plugins = with pkgs.vimPlugins; [
@@ -60,7 +63,7 @@ with final.pkgs.lib; let
     yazi-nvim
 
     # AI
-    codecompanion-nvim         # AI tools support coding
+    codecompanion-nvim # AI tools support coding
     codecompanion-spinner-nvim # Show loading icon while response
 
     # ^ UI
@@ -93,7 +96,8 @@ with final.pkgs.lib; let
     lua-language-server
     nil # nix LSP
   ];
-in {
+in
+{
   # This is the neovim derivation
   # returned by the overlay
   nvim-pkg = mkNeovim {
