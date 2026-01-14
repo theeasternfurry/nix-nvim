@@ -29,6 +29,13 @@ require("codecompanion").setup({
   strategies = {
     chat = {
       adapter = "ollama",
+      slash_commands = {
+        ["file"] = {
+          opts = {
+            provider = "fzf_lua",
+          },
+        },
+      },
     },
     inline = { adapter = "ollama" },
     agent = { adapter = "ollama" },
