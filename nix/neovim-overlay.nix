@@ -63,6 +63,7 @@ let
     yazi-nvim
 
     # AI
+    avante-nvim # Like AI cursor
     codecompanion-nvim # AI tools support coding
     codecompanion-spinner-nvim # Show loading icon while response
 
