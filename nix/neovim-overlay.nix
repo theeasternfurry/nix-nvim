@@ -93,9 +93,10 @@ let
   ];
 
   extraPackages = with pkgs; [
-    # language servers, etc.
+    # language servers
     lua-language-server
-    nil # nix LSP
+    nil
+    svelte-language-server
   ];
 in
 {
