@@ -41,6 +41,10 @@ require('lualine').setup {
   },
   options = {
     theme = 'auto',
+    disabled_filetypes = {
+      statusline = { "avante", "Avante", "AvanteInput" },
+      winbar = { "avante", "Avante", "AvanteInput" },
+    },
   },
   -- Example top tabline configuration (this may clash with other plugins)
   -- tabline = {
