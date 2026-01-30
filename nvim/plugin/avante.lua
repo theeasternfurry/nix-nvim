@@ -6,7 +6,7 @@ require("avante").setup({
   providers = {
     ollama = {
       endpoint = ollama_url,
-      model = "deepseek-coder-v2:16b",
+      model = "qwen2.5-coder:7b",
     },
   },
 })
